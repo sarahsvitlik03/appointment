@@ -66,7 +66,7 @@ public class AppointmentController : ControllerBase
 
     // Add validation
 
-    // Add DTOS
+     
 
     // Add error handling
 }
