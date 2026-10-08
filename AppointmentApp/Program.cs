@@ -1,9 +1,17 @@
+using Microsoft.EntityFrameworkCore;
+using AppointmentApp.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
+
+// Add DbContext
+builder.Services.AddDbContext<AppointmentDbContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+    ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
 
 var app = builder.Build();
 
